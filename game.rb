@@ -17,7 +17,7 @@ class Game
         puts '----- GAME OVER ------'
         return 1
       else
-        puts "#{@player21.name} wins with a score of #{@player1.lives}/3"
+        puts "#{@player1.name} wins with a score of #{@player1.lives}/3"
         puts '----- GAME OVER ------'
         return 1
       end
