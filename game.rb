@@ -2,8 +2,8 @@
 
 class Game
   def initialize
-    @player1 = Player.new("Player 1")
-    @player2 = Player.new("Player 2")
+    @player1 = Player.new("Player ONE")
+    @player2 = Player.new("Player TWO")
   end
   
   def start_game
@@ -13,15 +13,17 @@ class Game
   def check_lives
     if @player1.lives == 0 or @player2.lives == 0
       if @player1.lives == 0
-        puts "#{player2.name} wins with a score of #{player2.lives}/3"
+        puts "#{@player2.name} wins with a score of #{@player2.lives}/3"
+        puts '----- GAME OVER ------'
         return 1
       else
-        puts "#{player2.name} wins with a score of #{player2.lives}/3"
+        puts "#{@player21.name} wins with a score of #{@player1.lives}/3"
+        puts '----- GAME OVER ------'
         return 1
       end
     end
     
-    puts "#{@player1.name} has #{@player1.lives} #{@player1.lives > 1 ? 'lives' : 'life'} and #{@player2.name} has #{@player2.lives} #{@player2.lives > 1 ? 'lives' : 'life'}"
+    puts "#{@player1.name} has (#{@player1.lives}) #{@player1.lives > 1 ? 'lives' : 'life'} and #{@player2.name} has (#{@player2.lives}) #{@player2.lives > 1 ? 'lives' : 'life'}"
   end
       
   def game_loop
@@ -39,16 +41,18 @@ class Game
       correct_answer = question.answer
       correct_msg = "Yes! #{question.number1} plus #{question.number2} does equal #{correct_answer}"
 
-      current_player = player_turn = 1 ? @player1 : @player2
+      current_player = @player_turn == 1 ? @player1 : @player2
 
       question.ask_question(current_player)
       print '> '
+
       @user_answer = $stdin.gets.chomp
-      if user_answer != correct_answer
+
+      if @user_answer.to_i == correct_answer
+        puts correct_msg
+      else 
         current_player.lose_life
         puts "Incorrect."
-      else 
-        puts correct_msg
       end
 
       # Change the player

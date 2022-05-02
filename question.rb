@@ -7,7 +7,7 @@ class Question
   end
 
   def ask_question(player)
-    puts "#{player.name} what does #{@number1} plus #{@number2} equal?"
+    puts "  #{player.name}, what does #{@number1} plus #{@number2} equal?"
   end
 
   def check_answer(input)
